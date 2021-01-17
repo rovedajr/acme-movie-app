@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
-import { MovieThumb } from "./components/MovieThumb";
+import { Link, Route, Switch } from "react-router-dom";
+import { MovieList } from "./components/MovieList";
 
 const trending_api = "https://api.themoviedb.org/3/trending/movie/week?api_key=724319318cacc02510ec09d55f468c4a"
 const query_api = "https://api.themoviedb.org/3/search/movie?&api_key=724319318cacc02510ec09d55f468c4a&query="
@@ -19,14 +19,16 @@ function App() {
     })
   },[]);
 
+ 
+
   const formSubmit = (event) => {
     event.preventDefault();
     setMovies([])
     fetch(query_api + queryTerm)
     .then(res => res.json())
     .then(data => {
-      let sortedData = data.results.sort((a,b) => a.vote_average < b.vote_average ? 1 : -1)
-      setMovies(sortedData);
+      let query = data.results.sort((a,b) => a.vote_average < b.vote_average ? 1 : -1)
+      setMovies(query);
     });
     setQueryTerm('');
   };
@@ -64,15 +66,12 @@ function App() {
     </div>
   </div>
       </header>
-      <div className="bg-gray-900 flex">
-        <div className="w-10/12 mx-auto flex flex-wrap justify-between py-10">
-            { movies.length > 0 && movies.map((movie, idx) => (
-
-              <MovieThumb key={idx} {...movie}/>
-
-          ))}
-          </div>
-      </div>
+      <Switch>
+      <Route path="/">
+        <MovieList
+          movies={movies}
+        /></Route>
+      </Switch>
     </>
   );
 }
