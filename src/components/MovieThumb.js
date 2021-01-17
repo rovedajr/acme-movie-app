@@ -12,7 +12,7 @@ return (<>
     <img className="mb-4" src={image_api + poster_path} alt={title} />
     <div className="flex flex-wrap justify-between p-2 m-2">
         <h3>{title}</h3>
-        <span className="bg-gray-800 rounded px-1 text-white">{vote_average}</span>
+        <span className={`${vote_average >= 7 ? "bg-yellow-400 rounded px-1" : "text-white bg-gray-800 rounded px-1"}`}>{vote_average}</span>
     </div>
     <div className="p-2">
     <Link to={id}>
@@ -22,4 +22,3 @@ return (<>
 </div>
 </>)
 };
-
