@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-// import {HashRouter as Router} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { MovieThumb } from "./components/MovieThumb";
 
 const trending_api = "https://api.themoviedb.org/3/trending/movie/week?api_key=724319318cacc02510ec09d55f468c4a"
@@ -21,6 +21,7 @@ function App() {
 
   const formSubmit = (event) => {
     event.preventDefault();
+    setMovies([])
     fetch(query_api + queryTerm)
     .then(res => res.json())
     .then(data => {
@@ -43,7 +44,9 @@ function App() {
   
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow text-white">
-      <span>Trending this week</span>
+      <span>
+        <Link to="/">Trending this week</Link>
+      </span>
     </div>
     <div>
 
