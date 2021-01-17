@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import { Link, Route, Switch } from "react-router-dom";
 import { MovieList } from "./components/MovieList";
+import logo from './assets/acme.png';
 
 const trending_api = "https://api.themoviedb.org/3/trending/movie/week?api_key=724319318cacc02510ec09d55f468c4a"
 const query_api = "https://api.themoviedb.org/3/search/movie?&api_key=724319318cacc02510ec09d55f468c4a&query="
@@ -19,6 +19,14 @@ function App() {
     })
   },[]);
 
+  const trendListCall = () => {
+    fetch(trending_api)
+    .then(res => res.json())
+    .then(data => {
+      let sortedData = data.results.sort((a,b) => a.vote_average < b.vote_average ? 1 : -1)
+      setMovies(sortedData);
+    })
+  }
  
 
   const formSubmit = (event) => {
@@ -39,15 +47,19 @@ function App() {
 
   return (
     <>
-      <header className="flex items-center justify-between flex-wrap bg-red-800 p-6">
+    <div className="flex items-center justify-between flex-wrap bg-red-800 p-6">
+      <header className="w-10/12 mx-auto flex items-center justify-between flex-wrap">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
-    <span className="logo">LOGO GOES HERE</span>
+    <span className="logo">
+    <img src={logo} alt="logo" />
+    </span>
   </div>
   
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow text-white">
-      <span>
-        <Link to="/">Trending this week</Link>
+      <span onClick={trendListCall}
+      className="cursor-pointer">
+        Trending this week
       </span>
     </div>
     <div>
@@ -66,12 +78,8 @@ function App() {
     </div>
   </div>
       </header>
-      <Switch>
-      <Route path="/">
-        <MovieList
-          movies={movies}
-        /></Route>
-      </Switch>
+      </div>
+        <MovieList movies={movies}/>
     </>
   );
 }
