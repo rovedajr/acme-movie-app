@@ -60,9 +60,10 @@ function App() {
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow text-white text-center">
       <h2 className='uppercase text-lg md:text-2xl md:my-2'>
-        <Link to='/'>
-        Trending this week
-        </Link>
+        <span onClick={trendListCall}
+        className="cursor-pointer">
+          Trending this week
+          </span>  
       </h2>
     </div>
     <div className="flex justify-center text-xs py-2 leading-none hover:border-transparent my-2 lg:mt-0">

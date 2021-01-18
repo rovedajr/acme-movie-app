@@ -30,9 +30,9 @@ export const MovieDetails = ({movies}) => {
                         minHeight: "30vh"
                     }}>
                         </div>
-                <div className="col-span-full my-8">
-                    <h2 className="text-2xl">{movie.title}</h2>
-                    <p className="text-lg">{movie.overview}</p>
+                <div className="col-span-full p-8 border rounded-md border-white mt-4 bg-gray-200 text-gray-800">
+                    <h2 className="text-xl md:text-2xl mb-4">{movie.title}</h2>
+                    <p className="text-sm md:text-lg">{movie.overview}</p>
                 </div>
                 </div>
                 </div>
