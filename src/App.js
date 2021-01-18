@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { MovieList } from "./components/MovieList";
 import { MovieDetails} from "./components/MovieDetails"
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import logo from './assets/acme.png';
 
 const trending_api = "https://api.themoviedb.org/3/trending/movie/week?api_key=724319318cacc02510ec09d55f468c4a"
@@ -11,7 +11,6 @@ function App() {
 
   const [movies, setMovies] = useState([]);
   const [queryTerm, setQueryTerm] = useState('');
-  const {movieId} = useParams();
 
   useEffect(() => {
     fetch(trending_api)
@@ -86,7 +85,9 @@ function App() {
       </header>
       </div>
         <Switch>
-          <Route path='/:movieId'><MovieDetails/></Route>
+          <Route path='/:id'>
+            <MovieDetails movies={movies}/>
+            </Route>
           <Route path="/"><MovieList movies={movies}/></Route>
         </Switch>
     </>

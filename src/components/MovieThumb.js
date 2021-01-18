@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Switch} from 'react-router-dom';
 
 const image_api = "https://image.tmdb.org/t/p/w1280";
 
@@ -15,9 +15,11 @@ return (<>
         <span className={`${vote_average >= 7 ? "bg-yellow-400 rounded px-1" : "text-white bg-gray-800 rounded px-1"}`}>{vote_average}</span>
     </div>
     <div className="p-2">
-    <Link to={id}>
+    <Switch>
+    <Link to={`${id}`}>
     <button className="uppercase px-4 bg-red-800 hover:bg-gray-800 py-2 rounded border border-transparent text-white max-w-max shadow-sm hover:shadow-lg">read more</button>
     </Link>
+    </Switch>
     </div>
 </div>
 </>)
