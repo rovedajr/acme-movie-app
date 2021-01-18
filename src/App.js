@@ -59,7 +59,7 @@ function App() {
   
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
     <div className="text-sm lg:flex-grow text-white text-center">
-      <h2 className='uppercase text-lg md:my-2'>
+      <h2 className='uppercase text-lg md:text-2xl md:my-2'>
         <Link to='/'>
         Trending this week
         </Link>
@@ -75,7 +75,7 @@ function App() {
       onChange={inputChange}
       className="rounded-l-lg p-1 md:p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
       placeholder="Search by titlte"/>
-		<button className="px-4 rounded-r-lg bg-yellow-400 text-gray-800 font-bold p-1 md:p-4 uppercase border-yellow-500 border-t border-b border-r">Search</button>
+		<button className="p-4 rounded-r-lg bg-yellow-400 text-gray-800 font-bold p-1 md:p-4 uppercase border-yellow-500 border-t border-b border-r">Search</button>
 	</form>
     </div>
   </div>
