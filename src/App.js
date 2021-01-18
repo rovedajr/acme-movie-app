@@ -51,14 +51,12 @@ function App() {
     <>
     <div className="flex items-center justify-between flex-wrap bg-red-800 p-6">
       <header className="w-10/12 mx-auto flex items-center justify-between flex-wrap">
-  <div className="flex items-center flex-shrink-0 text-white mr-6">
-    <span className="logo">
+    <div className="w-full md:w-auto flex justify-center my-2">
     <img src={logo} alt="logo" />
-    </span>
-  </div>
+    </div>
   
   <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div className="text-sm lg:flex-grow text-white">
+    <div className="text-sm lg:flex-grow text-white text-center">
       <span onClick={trendListCall}
       className="cursor-pointer">
         Trending this week
